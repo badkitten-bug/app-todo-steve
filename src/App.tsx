@@ -5,6 +5,7 @@ import { generateClient } from "aws-amplify/data";
 
 import { Authenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
+import { Flex, Text, Divider } from "@aws-amplify/ui-react";
 
 const client = generateClient<Schema>();
 
@@ -28,17 +29,21 @@ function App() {
     <Authenticator>
       {({ signOut }) => (
         <main>
-        <h1>Normativa Legal Untels</h1>
-        <button onClick={createTodo}>➕ new</button>
-        <ul>
-          {todos.map((todo) => (
-            <button onClick={() => deleteTodo(todo.id)} key={todo.id}>
-              {todo.content}
-            </button>
-          ))}
-        </ul>
-      <button onClick={signOut}>Sign out</button>
-    </main>
+          <Flex direction="column">
+            <Text></Text>
+            <Divider size="small" orientation="horizontal" />
+            <Text><h1>Normativa Legal Untels</h1></Text>
+          </Flex>
+          <button onClick={createTodo}>➕ new</button>
+          <ul>
+            {todos.map((todo) => (
+              <li onClick={() => deleteTodo(todo.id)} key={todo.id}>
+                {todo.content}
+              </li>
+            ))}
+          </ul>
+          <button onClick={signOut}>Sign out</button>
+        </main>
       )}
     </Authenticator>
   );
