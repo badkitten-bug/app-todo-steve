@@ -4,7 +4,7 @@ import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
 
 import "@aws-amplify/ui-react/styles.css";
-import { Authenticator,Flex, Text, Divider } from "@aws-amplify/ui-react";
+import { Authenticator, Flex, Text, Divider } from "@aws-amplify/ui-react";
 
 const client = generateClient<Schema>();
 
@@ -26,13 +26,14 @@ function App() {
   }
   return (
     <Authenticator>
-      {({ signOut }) => (
+      {({ signOut, user }) => (
         <main>
           <Flex direction="column">
             <Text> Crud para la clase</Text>
             <Divider size="small" orientation="horizontal" />
             <Text>
               <h1>Normativa Legal Untels</h1>
+              <h3>Bienvenido: {user?.signInDetails?.loginId}</h3>
             </Text>
           </Flex>
           <button onClick={createTodo}>➕ new</button>
